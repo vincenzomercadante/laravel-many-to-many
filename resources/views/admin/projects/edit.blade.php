@@ -44,7 +44,8 @@
                 @foreach ($technologies as $technology)
                     <div>
                         <input type="checkbox" name="check-{{ $technology->id }}" id="check-{{ $technology->id }}"
-                            value="{{ $technology->id }}" class="form-check-input">
+                            value="{{ $technology->id }}" class="form-check-input"
+                            @if (in_array($technology->id, $project->getTechArray())) checked @endif>
                         <label for="check-{{ $technology->id }}" class="form-check-label">{{ $technology->label }}</label>
                     </div>
                 @endforeach

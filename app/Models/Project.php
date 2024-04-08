@@ -28,4 +28,8 @@ class Project extends Model
     public function get_description($n_charts){
         return ($n_charts < strlen($this->description)) ? substr($this->description, 0, $n_charts) . '...' : substr($this->description, 0, $n_charts);
     }
+
+    public function getTechArray(){
+        return $this->technologies->pluck('id')->toArray();
+    }
 }

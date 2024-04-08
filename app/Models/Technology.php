@@ -16,4 +16,6 @@ class Technology extends Model
     public function getTechnologyLabel(){
         return "<div class='badge' style='background-color: {$this->color}'> {$this->label} </div>";
     }
+
+    
 }
