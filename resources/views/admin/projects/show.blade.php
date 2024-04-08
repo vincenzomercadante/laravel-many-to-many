@@ -24,10 +24,14 @@
             </figure>
 
             <div>
-                <h2><span
-                        class="fw-semibold text-capitalize mb-2 fs-4 d-inline-block me-2">Title:</span>{{ $project->title }}
+                <h2><span class="fw-bold text-capitalize mb-2 fs-5 d-inline-block me-2">Title:</span>{{ $project->title }}
                 </h2>
-                <h3><span class="fw-semibold text-capitalize mb-2 fs-4 d-inline-block">description:
+                <h4><span class="fw-bold text-capitalize mb-2 fs-5 d-inline-block me-2">Technologies:</span>
+                    @foreach ($project->technologies as $tech)
+                        {!! $tech->getTechnologyLabel() !!}
+                    @endforeach
+                </h4>
+                <h3><span class="fw-bold text-capitalize mb-2 fs-5 d-inline-block">description:
                     </span><br>{{ $project->description }}</h3>
                 <a href="{{ $project->github_reference }}">See on GitHub!</a>
 

@@ -40,7 +40,7 @@
                             <li class="list-group-item">
                                 {!! $project->type->getTypeLabel() !!}
                             </li>
-                            <li class="list-group-item overflow-x-auto">
+                            <li class="list-group-item">
                                 @foreach ($project->technologies as $tech)
                                     {!! $tech->getTechnologyLabel() !!}
                                 @endforeach
