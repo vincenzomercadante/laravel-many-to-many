@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Project;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreTechnologyRequest;
+use App\Http\Requests\UpdateTechnologyRequest;
 use App\Models\Technology;
 use Illuminate\Http\Request;
 
@@ -33,7 +35,7 @@ class TechnologyController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      */
-    public function store(Request $request)
+    public function store(StoreTechnologyRequest $request)
     {
         
         // $request->validated();
@@ -45,7 +47,7 @@ class TechnologyController extends Controller
         $technology->fill($data);
         $technology->save();
 
-        return redirect()->route('admin.technology.show', compact('technology'))->with('message-status', 'alert-success')->with('message-text', 'Technology created successfully');
+        return redirect()->route('admin.technologies.show', compact('technology'))->with('message-status', 'alert-success')->with('message-text', 'Technology created successfully');
     }
 
     /**
@@ -56,7 +58,7 @@ class TechnologyController extends Controller
     public function show(Technology $technology)
     {
         $projects = $technology->projects->all();
-        return view('admin.technologies.show', compact('tecnology', 'projects'));
+        return view('admin.technologies.show', compact('technology', 'projects'));
     }
 
     /**
@@ -76,7 +78,7 @@ class TechnologyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Technology  $technology
      */
-    public function update(Request $request, Technology $technology)
+    public function update(UpdateTechnologyRequest $request, Technology $technology)
     {
         $request->validated();
 

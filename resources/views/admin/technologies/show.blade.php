@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@section('title', 'Type {{ $type->label }}')
+@section('title', 'Type {{ $technology->label }}')
 
 @section('content')
 
     <div class="container">
         <div class="d-flex gap-3 align-items-center">
-            <h1 class="my-3">{{ $type->label }}</h1>
-            {!! $type->getTypeLabel() !!}
+            <h1 class="my-3">{{ $technology->label }}</h1>
+            {!! $technology->getTechnologyLabel() !!}
         </div>
         <h2 class="mb-3">Reltated Projects</h2>
         <table class="table">
@@ -57,12 +57,6 @@
 @endsection
 
 
-@section('css')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-@endsection
-
 @section('destroy-modal')
     @foreach ($projects as $project)
         <!-- Modal -->
@@ -71,7 +65,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Delete "{{ $project->title }}"</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -91,4 +85,10 @@
             </div>
         </div>
     @endforeach
+@endsection
+
+@section('css')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 @endsection

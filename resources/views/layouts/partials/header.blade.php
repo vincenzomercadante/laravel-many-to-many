@@ -28,6 +28,9 @@
                         <li class="nav-item">
                             <a href="{{ route('admin.types.index') }}" class="nav-link">Types</a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.technologies.index') }}" class="nav-link">Technologies</a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
                                 data-bs-toggle="dropdown" href="#" id="navbarDropdown" role="button" v-pre>

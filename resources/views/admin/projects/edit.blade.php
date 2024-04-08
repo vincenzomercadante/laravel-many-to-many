@@ -38,10 +38,10 @@
             </div>
 
             {{-- technologies checkbox col --}}
-            <div class="col-12 d-flex align-items-center justify-content-between">
+            <div class="col-12 ">
                 <label for="" class="form-label mb-2">Project's Technologies:</label>
 
-                <div class="@error('technologies') is-invalid @enderror">
+                <div class="@error('technologies') is-invalid @enderror d-flex align-items-center justify-content-between">
                     @foreach ($technologies as $technology)
                         <div>
                             <input type="checkbox" name="technologies[]" id="check-{{ $technology->id }}"
