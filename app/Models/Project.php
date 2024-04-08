@@ -21,6 +21,10 @@ class Project extends Model
         return $this->belongsTo(Type::class);
     }
 
+    public function tasks(){
+        return $this->belongsToMany(Technology::class);
+    }
+
     public function get_description($n_charts){
         return ($n_charts < strlen($this->description)) ? substr($this->description, 0, $n_charts) . '...' : substr($this->description, 0, $n_charts);
     }

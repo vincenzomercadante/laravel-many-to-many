@@ -36,6 +36,20 @@
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
+
+            {{-- technologies checkbox col --}}
+            <div class="col-12 d-flex align-items-center justify-content-between">
+                <label for="" class="form-label mb-2">Project's Technologies:</label>
+
+                @foreach ($technologies as $technology)
+                    <div>
+                        <input type="checkbox" name="check-{{ $technology->id }}" id="check-{{ $technology->id }}"
+                            value="{{ $technology->id }}" class="form-check-input">
+                        <label for="check-{{ $technology->id }}" class="form-check-label">{{ $technology->label }}</label>
+                    </div>
+                @endforeach
+            </div>
+
             <div class="col-12">
                 <label for="github_reference" class="form-label mb-2">Github Link</label>
                 <input type="url" name="github_reference" id="github_reference"
