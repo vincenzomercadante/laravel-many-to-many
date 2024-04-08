@@ -1,0 +1,29 @@
+@import "~bootstrap/scss/bootstrap";
+
+.wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    main {
+        flex-grow: 1;
+
+        #projects .card-img-top {
+            height: 300px;
+            background-color: lightgrey;
+
+            img {
+                height: 300px;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+
+        #project-details figure {
+            width: 500px;
+            height: 300px;
+            text-align: center;
+            background-color: lightgrey;
+        }
+    }
+}
