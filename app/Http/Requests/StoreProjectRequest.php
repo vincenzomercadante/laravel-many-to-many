@@ -27,7 +27,8 @@ class StoreProjectRequest extends FormRequest
             'title' => 'required|unique:projects,title|string|max:100',
             'type_id' => 'required|exists:types,id',
             'github_reference' => 'required|unique:projects,github_reference|url|max:255',
-            'description' => 'required|string|max:65535'
+            'description' => 'required|string|max:65535',
+            'technologies' =>'required|exists:technologies,id'
         ];
     }
 
@@ -49,6 +50,9 @@ class StoreProjectRequest extends FormRequest
             'description.required' => 'Description is required',
             'description.string' => 'Description must to be a string',
             'description.max' => 'Too long description',
+
+            'technologies.required' =>'Almost one technology is required',
+            'technologies.exists'=> 'The selected technologies is not available'
         ];
     }
 }
