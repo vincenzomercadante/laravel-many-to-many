@@ -54,6 +54,7 @@ class ProjectController extends Controller
 
         $project->save();
 
+        $project->technologies()->attach($data['technologies']);
 
         return redirect()->route('admin.projects.show', compact('project'))->with('message-status', 'alert-success')->with('message-text', 'Project created successfully');;
     }
@@ -96,6 +97,8 @@ class ProjectController extends Controller
         $project->slug = Str::slug($project->title);
 
         $project->save();
+
+        $project->technologies()->sync($data['technologies']);
 
         return redirect()->route('admin.projects.show', $project)->with('message-status', 'alert-success')->with('message-text', 'Project modified successfully');;
     }
