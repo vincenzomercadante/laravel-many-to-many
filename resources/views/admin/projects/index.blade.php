@@ -40,6 +40,11 @@
                             <li class="list-group-item">
                                 {!! $project->type->getTypeLabel() !!}
                             </li>
+                            <li class="list-group-item overflow-x-auto">
+                                @foreach ($project->technologies as $tech)
+                                    {!! $tech->getTechnologyLabel() !!}
+                                @endforeach
+                            </li>
                         </ul>
                         {{-- link for github --}}
                         <div class="card-body">
