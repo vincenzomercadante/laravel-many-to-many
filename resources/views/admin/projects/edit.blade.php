@@ -92,10 +92,35 @@
             </div>
         </form>
 
-        <div class="image-preview my-5">
-            <h2>Image Preview</h2>
-            <img src="{{ asset('storage/' . $project->image) }}" alt="" class="img-fluid">
-        </div>
+        @if ($project->image)
+            <div class="image-preview my-5">
+                <h2>Image Preview</h2>
+                <div class="position-relative">
+                    <img src="{{ asset('storage/' . $project->image) }}" alt="" class="img-fluid">
+                    <div class="delete-preview" id="delete-preview">
+                        X
+                    </div>
+                </div>
+
+                <form action="{{ route('admin.projects.delete-image', $project) }}" method="POST" class="d-none"
+                    id="delete-form">
+                    @csrf
+                    @method('DELETE')
+                </form>
+            </div>
+        @endif
     </div>
+
+@endsection
+
+@section('js')
+    <script>
+        const deleteButton = document.getElementById('delete-preview')
+        const deleteForm = document.getElementById('delete-form')
+
+        deleteButton.addEventListener('click', () => {
+            deleteForm.submit();
+        })
+    </script>
 
 @endsection

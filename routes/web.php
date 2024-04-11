@@ -34,6 +34,8 @@ Route::middleware('auth')
     Route::resource('types', TypeController::class);
     Route::resource('technologies', TechnologyController::class);
 
+    Route::delete('projects/{project}/delete-image', [ProjectController::class, 'destroyImage'])->name('projects.delete-image');
+
 
   });
 

@@ -108,14 +108,16 @@ class ProjectController extends Controller
 
         $project->slug = Str::slug($project->title);
 
-        if($data['image'] && $project->image){
-            Storage::delete($project->image);
-            $path_img = Storage::put('upload/projects', $data['image']);
-            $project->image = $path_img;
+        if(isset($data['image'])){
+            if($data['image'] && $project->image){
+                Storage::delete($project->image);
+                $path_img = Storage::put('upload/projects', $data['image']);
+                $project->image = $path_img;
 
-        } else if ($data['image'] && !$project->image) {
-            $path_img = Storage::put('upload/projects', $data['image']);
-            $project->image = $path_img;
+            } else if ($data['image'] && !$project->image) {
+                $path_img = Storage::put('upload/projects', $data['image']);
+                $project->image = $path_img;
+            }
         }
 
         $project->save();
@@ -137,5 +139,16 @@ class ProjectController extends Controller
         $project->delete();
 
         return redirect()->route('admin.projects.index')->with('message-status', 'alert-danger')->with('message-text', 'Project delete successfully');
+    }
+
+    public function destroyImage(Project $project)
+    {
+        Storage::delete($project->image);
+
+        $project->image = null;
+
+        $project->save();
+
+        return redirect()->back();
     }
 }
