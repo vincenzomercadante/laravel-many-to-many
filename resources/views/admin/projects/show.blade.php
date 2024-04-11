@@ -20,7 +20,7 @@
 
         <div class="d-flex gap-4 mt-4">
             <figure>
-                <img src="" alt="{{ $project->title }} image">
+                <img src="{{ asset('storage/' . $project->image) }}" alt="{{ $project->title }} image">
             </figure>
 
             <div>

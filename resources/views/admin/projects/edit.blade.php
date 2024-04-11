@@ -7,12 +7,13 @@
     <div class="container">
         <h1 class="my-3">Edit a Project</h1>
 
-        <form action="{{ route('admin.projects.update', $project) }}" method="POST" class="row gy-4">
+        <form action="{{ route('admin.projects.update', $project) }}" method="POST" class="row gy-4"
+            enctype="multipart/form-data">
             @csrf
 
             @method('PATCH')
 
-            <div class="col-6">
+            <div class="col-4">
                 <label for="title" class="form-label mb-2">Project's Title</label>
                 <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror"
                     placeholder="Project's Title" value="{{ old('title', $project->title) }}">
@@ -22,7 +23,7 @@
                     </div>
                 @enderror
             </div>
-            <div class="col-6">
+            <div class="col-4">
                 <label for="type_id" class="form-label mb-2">Project's Type</label>
                 <select name="type_id" id="type_id" class="form-select">
                     <option selected class="d-none">Select a project type</option>
@@ -35,6 +36,12 @@
                 @error('type_id')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
+            </div>
+
+            {{-- image input file col --}}
+            <div class="col-4">
+                <label for="image" class="form-label">Project Image:</label>
+                <input type="file" name="image" id="image" class="form-control">
             </div>
 
             {{-- technologies checkbox col --}}
@@ -84,6 +91,11 @@
 
             </div>
         </form>
+
+        <div class="image-preview my-5">
+            <h2>Image Preview</h2>
+            <img src="{{ asset('storage/' . $project->image) }}" alt="" class="img-fluid">
+        </div>
     </div>
 
 @endsection

@@ -23,8 +23,8 @@
                 <div class="col">
                     <div class="card h-100">
                         {{-- project image --}}
-                        <img src="" class="card-img-top border border-bottom-1 text-center"
-                            alt="{{ $project->title }} image">
+                        <img src="{{ asset('storage/' . $project->image) }}"
+                            class="card-img-top border border-bottom-1 text-center" alt="{{ $project->title }} image">
                         <div class="card-body">
                             {{-- project title --}}
                             <h5 class="card-title">{{ $project->title }}</h5>

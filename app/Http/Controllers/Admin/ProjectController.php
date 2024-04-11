@@ -9,6 +9,8 @@ use App\Models\Project;
 use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Session\Store;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ProjectController extends Controller
@@ -51,6 +53,11 @@ class ProjectController extends Controller
 
         $project->fill($data);
         $project->slug = Str::slug($project->title);
+
+        if($data['image']){
+            $path_img = Storage::put('upload/projects', $data['image']);
+            $project->image = $path_img;
+        }
 
         $project->save();
 
@@ -95,6 +102,16 @@ class ProjectController extends Controller
         $project->fill($data);
 
         $project->slug = Str::slug($project->title);
+
+        if($data['image'] && $project->image){
+            Storage::delete($project->image);
+            $path_img = Storage::put('upload/projects', $data['image']);
+            $project->image = $path_img;
+
+        } else if ($data['image'] && !$project->image) {
+            $path_img = Storage::put('upload/projects', $data['image']);
+            $project->image = $path_img;
+        }
 
         $project->save();
 
