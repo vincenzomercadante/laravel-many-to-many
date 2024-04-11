@@ -1,11 +1,11 @@
 <x-mail::message>
     # {{ $project->title }} Created Succesfully
 
-    Cheers $user, {{ $project->title }} has just succesfully created!
+    Cheers {{ $user }}, {{ $project->title }} has just succesfully created!
 
     Click on the button below to see it
 
-    <x-mail::button :url="$project->name">
+    <x-mail::button :url="$project_route">
         Go to Project
     </x-mail::button>
 

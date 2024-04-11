@@ -51,7 +51,8 @@ class CreateProjectMail extends Mailable
             markdown: 'emails.create.projects',
             with:[
                 'user'=>$this->user,
-                'project'=>$this->project,
+                'project'=>$this->project->name,
+                'project_route' => route('admin.projects.show', $this->project)
             ]
         );
     }
